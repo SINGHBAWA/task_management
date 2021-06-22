@@ -11,49 +11,28 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v-m1a7(to^pm#2n_@io&-t3l1@h=+(8+$o=tg)&!=uy38%k%fc'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", '**********************')
+
+SECRET_KEY = "gdyf4376r436f348gfy34yg"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = []
 
+ROOT_URLCONF = 'routes'
 
-# Application definition
-
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'tasks',
-    'rest_framework',
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-ROOT_URLCONF = 'task_management.urls'
-
-STATIC_ROOT = BASE_DIR + "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static"
 
 TEMPLATES = [
@@ -72,22 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'task_management.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("DATABASE_NAME", "taskdb"),
-        'USER': os.environ.get("DATABASE_USER", "root"),
-        "PASSWORD": os.environ.get("DATABASE_USER", "root"),
-    }
-}
-
+WSGI_APPLICATION = 'gateway_interface.application'
 
 
 # Password validation
@@ -128,8 +92,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}

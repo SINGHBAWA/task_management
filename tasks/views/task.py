@@ -6,11 +6,11 @@ from tasks.serializers import TaskSerializer, TaskAssignedToSerializer
 from rest_framework.decorators import action
 from tasks.permissions import UserTaskPermission
 
-class TaskCreateListView(mixins.CreateModelMixin,
-                         mixins.ListModelMixin,
-                         mixins.RetrieveModelMixin,
-                         mixins.UpdateModelMixin,
-                         viewsets.GenericViewSet):
+class TaskCreateListUpdateView(mixins.CreateModelMixin,
+                               mixins.ListModelMixin,
+                               mixins.RetrieveModelMixin,
+                               mixins.UpdateModelMixin,
+                               viewsets.GenericViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     permission_classes = (UserTaskPermission, )

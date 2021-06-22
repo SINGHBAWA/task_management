@@ -24,10 +24,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tasks/', include("tasks.routers")),
+    path('tasks/', include("tasks.routes")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # {"username": "davidattenborough", "password": "boatymcboatface"}
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    # {"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3BrIjoxLCJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImNvbGRfc3R1ZmYiOiLimIMiLCJleHAiOjIzNDU2NywianRpIjoiZGUxMmY0ZTY3MDY4NDI3ODg5ZjE1YWMyNzcwZGEwNTEifQ.aEoAYkSJjoWH1boshQAaTkf8G3yn0kapko6HFRt7Rh4"}
-
 ]

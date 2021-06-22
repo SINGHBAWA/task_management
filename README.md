@@ -12,7 +12,7 @@
 * `sudo mysqld_safe --skip-grant-tables`
 * `sudo mysql --user=root mysql`
 * `mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';flush privileges;`
-* Create database and update credentials `settings.py`
+* Create database and update credentials `settings/database.py`
 
 
 ## Virtual environment
@@ -33,6 +33,13 @@
 
 Add superuser User
 * `python manage.py createsuperuser`
+
+
+Run django development server
+* `python manage.py runserver`
+
+* Note: Use gunicorn, dapne, uwsgi etc for running on prod. Never use django development server on production 
+
 
 Add Users and assign Groups:
 * login to django admin (http://127.0.0.1:8000/admin)

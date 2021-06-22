@@ -44,7 +44,7 @@ PUT: /tasks/{task-id}/
     "title": "test task",
     "description": "this is test task",
     "task_date": "2021-06-22T00:52:00Z",
-    "status": "pending",
+    "status": "pending"
 }
 ```
 

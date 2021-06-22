@@ -13,7 +13,6 @@
 * `sudo mysql --user=root mysql`
 * `mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';flush privileges;`
 * Create database and update credentials `settings.py`
-* dump database using  `mysql -u [user] -p testdb<testdb.dmp`
 
 
 ## Virtual environment
